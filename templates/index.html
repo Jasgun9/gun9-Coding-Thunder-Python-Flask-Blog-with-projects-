@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead mb-0" style="background-image: url('/static/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{params['blog_name']}}</h1>
+            <!-- <span class="subheading" id="typed"></span> -->
+            <h1 class="subheading"><span id="typed"></span></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% endif %}
+  {% endwith %}
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+     {% for project in projects %}    
+     <div class="post-preview">
+       <a href="/projects/{{project.slug}}">
+         <h2 class="post-title">{{ project.title }}
+         </h2>
+         <h3 class="post-subtitle">
+           {{project.language}}
+         </h3>
+       </a>
+       <p class="post-meta">Posted by
+         <a href="#">Admin</a>
+         on {{project.date}}</p>
+     </div>
+
+     <hr>
+</li></a>
+     {% endfor %}
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-left" href="{{prev}}">&larr; Previous</a>
+          <a class="btn btn-primary float-right" href="{{next}}">Next &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+<script src="/static/typed/typed.min.js" async defer></script>
+<script>
+    window.onload = function () {
+        console.log("loaded")
+        var typed = new Typed('#typed', {
+            strings: ["Heaven for programmers", "The Blog liked by programmers","You can post your projects here", "You can get your projects here"],
+            backSpeed: 15,
+            smartBackspace: true,
+            backDelay: 1200,
+            startDelay: 1000,
+            typeSpeed: 25,
+            loop: true,
+        });
+    };
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block body %}
+<style>
+  code[class*="language-"],
+  pre[class*="language-"] {
+      max-height: 614px;
+  }
+
+  .commentContainer {
+      overflow-x: auto;
+  }
+</style>
+<style>
+
+ div.code-toolbar > .toolbar {
+    position: absolute;
+    top: .3em;
+    right: .2em;
+    /*transition: opacity 0.3s ease-in-out;*/
+    /*opacity: 0;*/
+}
+
+div.code-toolbar > .toolbar button {
+  background: #000;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0}
+div.code-toolbar > .toolbar .toolbar-item {
+  display: inline-block;
+}
+div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span {
+  color: #bbb;
+  margin: 7px 15px;
+  font-size: .8em;
+  padding: 3px 3px;
+  background: #f5f2f0;
+  background: rgba(224, 224, 224, 0.2);
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
+  border-radius: 0.5rem;
+  border: #ffffff solid 0.13rem;
+}
+
+
+</style>
+
+<style>
+  .language_name {
+    color: #00FEFF;
+    font-size: 40px;
+}
+</style>
+
+  <link rel="stylesheet" href="/static/prism/prism.css">
+  
+
+
+{% set language = "language-"+projects.language %}
+<!-- {% set made = "made in "+projects.language+" language" %} -->
+  <style>
+    .logo{
+      margin-left: 276px;
+    }
+  </style>
+</div>
+
+
+  <header class="masthead" id="img">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{projects.title}}</h1>
+            <h2 class="subheading">made in <span class="language_name">{{projects.language.capitalize()}}</span> language</h2>
+            <span class="meta">Posted by
+              <a href="#">Admin</a>
+              on {{projects.date}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <pre class="{{language}}"><code>{{projects.code}}</code></pre>
+        </div>
+      </div>
+    </div>
+  </article>
+  <script src="/static/prism/prism.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+  {% endblock %}
